@@ -16,7 +16,9 @@ const burgerControls = (props) => (
             <BurgerControl 
                         key={ctrl.label} 
                         type={ctrl.label} 
-                        added={() => props.ingredientsAdded(ctrl.type)}    />
+                        label={ctrl.label}
+                        added={() => props.ingredientsAdded(ctrl.type)}
+                        removed={() => props.ingredientsRemoved(ctrl.type)}    />
         ))}
     </div>
 );
