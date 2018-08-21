@@ -12,13 +12,15 @@ const controls = [
 
 const burgerControls = (props) => (
     <div className={classes.BurgerControls}>
+        <p>Current price: Rs. {props.price}</p>
         {controls.map(ctrl => (
             <BurgerControl 
                         key={ctrl.label} 
                         type={ctrl.label} 
                         label={ctrl.label}
                         added={() => props.ingredientsAdded(ctrl.type)}
-                        removed={() => props.ingredientsRemoved(ctrl.type)}    />
+                        removed={() => props.ingredientsRemoved(ctrl.type)}
+                        disabled={props.disabled[ctrl.type]}    />
         ))}
     </div>
 );
