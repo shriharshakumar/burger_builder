@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+//import { HashRouter } from 'react-router-dom';
+//import {Redirect} from 'react-router-dom';
+//import { hashHistory } from 'react-router';
 import Burger from '../../components/Burger/Burger'
 import BurgerControls from '../../components/Burger/BurgerControls/BurgerControls'
 import Modal from '../../components/UI/Modal/Modal'
@@ -18,20 +21,21 @@ const INGREDIENT_PRICES = {
 
 class BurgerBuilder extends Component {
 
-    constructor(props){
-        super(props);
+    //constructor(props){
+    //    super(props);
 
-        this.state = {
-            ingredients: null,
-            totalPrice: 4,
-            purchasable: false,
-            purchasing: false,
-            loading: false,
-            error: false
-        }
+    state = {
+        ingredients: null,
+        totalPrice: 4,
+        purchasable: false,
+        purchasing: false,
+        loading: false,
+        error: false
     }
+    
 
     componentDidMount () {
+        console.log(this.props);
         axios.get('/ingredients.json')
         .then(response => {
             this.setState({ingredients: response.data});
@@ -126,6 +130,8 @@ class BurgerBuilder extends Component {
         //             purchasing: false
         //         })
         //     });
+        //hashHistory.push('/checkout');
+        //<Redirect to="/checkout"/>
         this.props.history.push('/checkout');
 
     }

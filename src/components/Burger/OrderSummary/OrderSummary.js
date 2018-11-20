@@ -1,9 +1,11 @@
 import React from 'react';
+//import {withRouter} from 'react-router-dom';
 
 import Aux from '../../../hoc/Auxiliary/Auxiliary';
 import Button from '../../UI/Button/Button';
 
 const orderSummary = (props) => {
+    console.log(props);
     const ingredientSummary = Object.keys(props.ingredients)
         .map(igKey => {
             return (
