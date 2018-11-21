@@ -139,7 +139,7 @@ class BurgerBuilder extends Component {
     render(){
         const disabled = {
             ...this.state.ingredients
-        }
+        };
         for(let key in disabled){
             disabled[key] = disabled[key] <= 0
         }
@@ -164,6 +164,7 @@ class BurgerBuilder extends Component {
             );
             orderSummary = <OrderSummary
                 ingredients={this.state.ingredients}
+				price={this.state.totalPrice}
                 purchaseCancelled={this.purchaseCancelHandler}
                 purchaseContinued={this.purchaseContinueHandler} />
         }
@@ -178,4 +179,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default withErrorHandler(BurgerBuilder, axios);
+export default withErrorHandler( BurgerBuilder, axios);
