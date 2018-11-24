@@ -38,7 +38,12 @@ class BurgerBuilder extends Component {
         //console.log(this.props);
         axios.get('/ingredients.json')
         .then(response => {
-            this.setState({ingredients: response.data});
+            this.setState(
+                {
+                    ingredients: response.data,
+                    purchasable: true
+                }
+            );
         })
         .catch(error => {
             this.setState({error: true});
@@ -102,34 +107,7 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         //alert('You continue!');
-        // this.setState({loading: true});
-        // const order = {
-        //     ingredients: this.state.ingredients,
-        //     price: this.state.totalPrice,
-        //     customer: {
-        // name: 'Harsha',
-        // address: {
-        //             street:'RES road',
-        //             zipcode: '573134',
-        //             country: 'India'
-        //         },
-        //         email: 'abc@gmail.com'
-        //     },
-        //     deliveryMethod: 'fastest'
-        // }
-        // axios.post('/orders.json', order)
-        //     .then(response => {
-        //         this.setState({
-        //             loading: false,
-        //             purchasing: false
-        //         })
-        //     })
-        //     .catch(error => {
-        //         this.setState({
-        //             loading: false,
-        //             purchasing: false
-        //         })
-        //     });
+        
         //hashHistory.push('/checkout');
         //<Redirect to="/checkout"/>
 
@@ -137,6 +115,7 @@ class BurgerBuilder extends Component {
         for(let i in this.state.ingredients){
             ingredient_parameter.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
         }
+        ingredient_parameter.push("price=" + this.state.totalPrice);
         const query_parameter = ingredient_parameter.join('&');
 
         this.props.history.push({
