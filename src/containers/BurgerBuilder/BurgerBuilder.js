@@ -35,7 +35,7 @@ class BurgerBuilder extends Component {
     
 
     componentDidMount () {
-        console.log(this.props);
+        //console.log(this.props);
         axios.get('/ingredients.json')
         .then(response => {
             this.setState({ingredients: response.data});
@@ -140,7 +140,7 @@ class BurgerBuilder extends Component {
         const query_parameter = ingredient_parameter.join('&');
 
         this.props.history.push({
-            pathname: '/checkout',
+            pathname: '/check-out',
             search: '?' + query_parameter
         });
 
