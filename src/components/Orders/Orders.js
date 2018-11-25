@@ -4,7 +4,6 @@ import classes from './Orders.css';
 
 const Orders = (props) => {
 
-    
     const loadedIngredients = [];
     for(let ingredientName in props.ingredients) {
         loadedIngredients.push({

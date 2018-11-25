@@ -40,8 +40,7 @@ class BurgerBuilder extends Component {
         .then(response => {
             this.setState(
                 {
-                    ingredients: response.data,
-                    purchasable: true
+                    ingredients: response.data
                 }
             );
         })
