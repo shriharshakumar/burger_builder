@@ -90,6 +90,7 @@ class ContactData extends Component{
                 },
                 isValid: true,
                 touched: true
+                
             }   
         },
         isFormValid: false,
