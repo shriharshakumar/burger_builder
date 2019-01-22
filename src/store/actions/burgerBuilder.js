@@ -23,22 +23,20 @@ export const initIngredients = (ingredients) => {
                 dispatch(setIngredients(response.data));
             })
             .catch(error => {
-                actionTypes.FAILED_LOADING_INGREDIENTS
+                dispatch(failedLoadingIngredients());
             });
     }
 };
 
-export const setIngredients = (order) => {
-    axios.post('/orders.json', order)
-        .then(response => {
-            this.setState({
-                loading: false,
-            });
-            this.props.history.push("/");
-        })
-        .catch(error => {
-            this.setState({
-                loading: false,
-            })
-        });
+export const failedLoadingIngredients = () => {
+    return {
+        type: actionTypes.FAILED_LOADING_INGREDIENTS
+    };
+}
+
+export const setIngredients = (ingredients) => {
+    return{
+        type: actionTypes.INIT_INGREDIENTS,
+        ingredients: ingredients
+    }
 };
